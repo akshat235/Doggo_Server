@@ -5,6 +5,6 @@ const dataController = require('../controller/questionsController');
 
 router.get('/getAllQuestions', dataController.getAllQuestions);
 
-router.get('/:id', dataController.getQuestionById);
+router.get('/:qid', dataController.getQuestionById);
 
 module.exports = router;

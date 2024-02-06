@@ -1,8 +1,6 @@
 const Question = require('../models/questions');
 
 
-
-
 exports.getAllQuestions = async (req, res) => {
     try {
         const questions = await Question.find();
@@ -17,7 +15,8 @@ exports.getAllQuestions = async (req, res) => {
 
 exports.getQuestionById = async (req, res) => {
     try {
-        const question = await Question.findById(req.params.id);
+        const qid = parseInt(req.params.qid);
+        const question = await Question.findOne({ QID: qid });
         if (!question) {
             return res.status(404).json({ message: 'Question not found' });
         }
@@ -27,3 +26,4 @@ exports.getQuestionById = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
